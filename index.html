@@ -8,229 +8,274 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
 /* ============ Tokens ============ */
 :root{
-  --bg:#0a0a0b;
-  --bg-elev:#121214;
-  --surface:#161618;
-  --surface-2:#1d1d20;
-  --fg:#f4f4f5;
-  --muted:#a1a1aa;
-  --muted-2:#71717a;
-  --border:#27272a;
-  --border-strong:#3f3f46;
-  --accent:#c6f432;        /* electric lime */
-  --accent-press:#b5e51d;
-  --on-accent:#0a0a0b;
+  --cream:#fff8ee;
+  --cream-2:#fff2df;
+  --ink:#221a2e;
+  --ink-soft:#5b5168;
+  --ink-faint:#8c8398;
+
+  --coral:#ff5c8a;
+  --coral-tint:#ffe2ec;
   --violet:#7c5cff;
-  --radius-sm:10px;
-  --radius:16px;
-  --radius-lg:24px;
-  --maxw:1200px;
-  --shadow:0 24px 60px -20px rgba(0,0,0,.7);
-  --ease:cubic-bezier(.2,.7,.2,1);
+  --violet-deep:#6a45f0;
+  --violet-tint:#ebe5ff;
+  --yellow:#ffc23c;
+  --yellow-tint:#fff0c6;
+  --teal:#13c4a3;
+  --teal-tint:#d3f6ef;
+  --sky:#3aa0ff;
+  --sky-tint:#dcecff;
+  --lime:#9bd60c;
+  --lime-tint:#ecf8cf;
+
+  --white:#ffffff;
+  --radius:22px;
+  --radius-lg:34px;
+  --radius-xl:46px;
+  --maxw:1180px;
+  --bounce:cubic-bezier(.34,1.56,.64,1);
+  --ease:cubic-bezier(.22,.61,.36,1);
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font-family:"Inter",system-ui,-apple-system,sans-serif;
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;line-height:1.05;letter-spacing:-.02em;margin:0;font-weight:600}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque","Plus Jakarta Sans",sans-serif;line-height:1.02;letter-spacing:-.02em;margin:0;font-weight:700}
 p{margin:0}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
 ul{margin:0;padding:0;list-style:none}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+svg{display:block}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
 
 .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:110px 0;position:relative}
 .eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);
+  display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.82rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--violet-deep);
+  background:var(--violet-tint);padding:7px 14px;border-radius:999px;
 }
-.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
-.section{padding:120px 0;position:relative}
-.section-head{max-width:680px;margin-bottom:64px}
-.section-head h2{font-size:clamp(2rem,4.6vw,3.4rem);margin:18px 0 0}
-.section-head p{color:var(--muted);font-size:1.08rem;margin-top:18px}
+.section-head{max-width:660px;margin-bottom:60px}
+.section-head h2{font-size:clamp(2.1rem,5.2vw,3.6rem);margin:18px 0 0;font-weight:800}
+.section-head p{color:var(--ink-soft);font-size:1.1rem;margin-top:18px}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .eyebrow{margin:0 auto}
+
+/* highlight marker */
+.mark{position:relative;white-space:nowrap}
+.mark>span{position:relative;z-index:1}
+.mark .hl{position:absolute;left:-4px;right:-4px;bottom:4%;height:42%;background:var(--yellow);border-radius:8px;z-index:0;transform:rotate(-1.2deg)}
+.mark.c2 .hl{background:var(--teal)}
+.mark.c3 .hl{background:var(--coral)}
 
 /* ============ Buttons ============ */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:.98rem;
-  padding:14px 26px;border-radius:999px;cursor:pointer;border:1px solid transparent;
-  transition:transform .2s var(--ease),background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease);
-  min-height:48px;white-space:nowrap;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;
+  padding:15px 28px;border-radius:999px;cursor:pointer;border:2px solid transparent;
+  transition:transform .25s var(--bounce),box-shadow .25s var(--ease),background .2s var(--ease);
+  min-height:50px;white-space:nowrap;
 }
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--accent);color:var(--on-accent)}
-.btn-primary:hover{background:var(--accent-press);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--fg);border-color:var(--border-strong)}
-.btn-ghost:hover{border-color:var(--fg);transform:translateY(-2px)}
-.btn-block{width:100%}
+.btn-primary{background:var(--violet-deep);color:#fff;box-shadow:0 8px 0 -2px #4d2cc4}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 0 -2px #4d2cc4}
+.btn-primary:active{transform:translateY(2px);box-shadow:0 4px 0 -2px #4d2cc4}
+.btn-ghost{background:var(--white);color:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 10px 0 -2px rgba(34,26,46,.18)}
+
+/* ============ Decorative blobs / doodles ============ */
+.blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.5;z-index:0;pointer-events:none;animation:float 12s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-26px) scale(1.08)}}
+.doodle{position:absolute;z-index:0;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes wiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 
 /* ============ Nav ============ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:background .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s var(--ease);
-  border-bottom:1px solid transparent;
+.nav{position:fixed;top:18px;left:0;right:0;z-index:100;transition:top .3s var(--ease)}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:rgba(255,248,238,.82);backdrop-filter:blur(12px);
+  border:2px solid var(--ink);border-radius:999px;padding:10px 12px 10px 22px;
+  box-shadow:0 6px 0 -1px rgba(34,26,46,.12);
 }
-.nav.scrolled{background:rgba(10,10,11,.72);backdrop-filter:blur(14px);border-bottom-color:var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
-.brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.28rem;letter-spacing:-.02em}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.03em}
 .brand .logo{width:34px;height:34px;flex:none}
-.nav-links{display:flex;align-items:center;gap:36px}
-.nav-links a{color:var(--muted);font-size:.95rem;font-weight:500;transition:color .2s var(--ease);position:relative}
-.nav-links a:hover{color:var(--fg)}
-.nav-cta{display:flex;align-items:center;gap:14px}
-.nav-toggle{display:none;background:none;border:1px solid var(--border-strong);border-radius:10px;width:46px;height:46px;cursor:pointer;color:var(--fg);align-items:center;justify-content:center}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:var(--ink-soft);font-size:.96rem;font-weight:600;transition:color .2s var(--ease)}
+.nav-links a:hover{color:var(--violet-deep)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav .btn{padding:11px 22px;min-height:44px;font-size:.95rem}
+.nav-toggle{display:none;background:var(--white);border:2px solid var(--ink);border-radius:50%;width:46px;height:46px;cursor:pointer;color:var(--ink);align-items:center;justify-content:center}
 .nav-toggle svg{width:22px;height:22px}
 
 /* ============ Hero ============ */
-.hero{position:relative;padding:170px 0 110px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
-.hero-bg .glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
-.hero-bg .g1{width:560px;height:560px;background:rgba(198,244,50,.16);top:-160px;right:-120px}
-.hero-bg .g2{width:480px;height:480px;background:rgba(124,92,255,.18);bottom:-200px;left:-120px}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.25;mask-image:radial-gradient(ellipse 80% 60% at 50% 35%,#000 30%,transparent 75%)}
-.hero-inner{position:relative;z-index:1;max-width:960px}
-.hero .badge{
-  display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border:1px solid var(--border);
-  border-radius:999px;background:var(--surface);font-size:.84rem;color:var(--muted);margin-bottom:28px;
+.hero{position:relative;padding:180px 0 110px;overflow:hidden}
+.hero .blob.b1{width:440px;height:440px;background:var(--coral);top:-80px;right:-60px}
+.hero .blob.b2{width:380px;height:380px;background:var(--sky);bottom:-120px;left:-80px;animation-delay:-4s}
+.hero .blob.b3{width:300px;height:300px;background:var(--yellow);top:40%;right:30%;opacity:.35;animation-delay:-7s}
+.hero-inner{position:relative;z-index:2;max-width:920px}
+.sticker{
+  display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);
+  font-weight:700;font-size:.86rem;padding:9px 16px;border-radius:999px;margin-bottom:26px;
+  transform:rotate(-2deg);box-shadow:0 6px 0 -1px rgba(34,26,46,.2);
 }
-.hero .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(198,244,50,.18)}
-.hero .badge strong{color:var(--fg);font-weight:600}
-.hero h1{font-size:clamp(2.7rem,8vw,5.7rem);font-weight:700}
-.hero h1 .grad{background:linear-gradient(100deg,var(--accent),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{font-size:clamp(1.05rem,2.2vw,1.32rem);color:var(--muted);max-width:600px;margin-top:28px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
-.hero-stats{display:flex;flex-wrap:wrap;gap:48px;margin-top:72px;padding-top:40px;border-top:1px solid var(--border)}
-.hero-stats .stat .num{font-family:"Space Grotesk",sans-serif;font-size:2.4rem;font-weight:700}
-.hero-stats .stat .lbl{color:var(--muted);font-size:.92rem;margin-top:2px}
+.sticker .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(155,214,12,.3)}
+.hero h1{font-size:clamp(2.9rem,8.4vw,6rem);font-weight:800;letter-spacing:-.035em}
+.hero p.lead{font-size:clamp(1.08rem,2.2vw,1.34rem);color:var(--ink-soft);max-width:600px;margin-top:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:56px}
+.chip{
+  display:flex;align-items:center;gap:12px;background:var(--white);border:2px solid var(--ink);
+  border-radius:18px;padding:14px 18px;box-shadow:0 6px 0 -1px rgba(34,26,46,.1);
+}
+.chip .n{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.5rem;line-height:1}
+.chip .l{font-size:.86rem;color:var(--ink-soft);font-weight:600;line-height:1.2;max-width:120px}
+.chip.k1 .n{color:var(--coral)} .chip.k2 .n{color:var(--violet-deep)} .chip.k3 .n{color:var(--teal)} .chip.k4 .n{color:var(--sky)}
 
 /* ============ Marquee ============ */
-.marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:30px 0;background:var(--bg-elev);overflow:hidden}
-.marquee-label{text-align:center;color:var(--muted-2);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}
-.marquee-track{display:flex;gap:64px;width:max-content;animation:scroll 30s linear infinite}
+.marquee{padding:26px 0;background:var(--ink);overflow:hidden;transform:rotate(-1.5deg) scale(1.04);margin:30px 0}
+.marquee-track{display:flex;gap:40px;width:max-content;animation:scroll 28s linear infinite;align-items:center}
 .marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{font-family:"Space Grotesk",sans-serif;font-size:1.5rem;font-weight:600;color:var(--muted-2);white-space:nowrap;transition:color .2s var(--ease)}
-.marquee-track span:hover{color:var(--fg)}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 32px))}}
+.marquee-track span{font-family:"Bricolage Grotesque",sans-serif;font-size:1.5rem;font-weight:700;color:var(--cream);white-space:nowrap}
+.marquee-track .star{width:22px;height:22px;color:var(--yellow);flex:none}
+.marquee-track .star.c2{color:var(--coral)} .marquee-track .star.c3{color:var(--teal)} .marquee-track .star.c4{color:var(--sky)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ============ Services ============ */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .svc{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;
-  transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
-  position:relative;overflow:hidden;
+  border:2px solid var(--ink);border-radius:var(--radius-lg);padding:30px;position:relative;overflow:hidden;
+  transition:transform .3s var(--bounce),box-shadow .3s var(--ease);
+  box-shadow:0 8px 0 -1px rgba(34,26,46,.16);
 }
-.svc:hover{transform:translateY(-4px);border-color:var(--border-strong);background:var(--surface-2)}
-.svc .ic{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:rgba(198,244,50,.1);color:var(--accent);margin-bottom:22px}
-.svc .ic svg{width:26px;height:26px}
-.svc h3{font-size:1.32rem;margin-bottom:10px}
-.svc p{color:var(--muted);font-size:.98rem}
-.svc .tag{margin-top:18px;font-size:.82rem;color:var(--muted-2);font-weight:500}
+.svc:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 16px 0 -1px rgba(34,26,46,.16)}
+.svc .ic{width:60px;height:60px;border-radius:18px;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);margin-bottom:22px;background:var(--white)}
+.svc .ic svg{width:28px;height:28px}
+.svc h3{font-size:1.42rem;margin-bottom:10px;font-weight:800}
+.svc p{color:var(--ink-soft);font-size:1rem}
+.svc .tag{margin-top:18px;font-size:.82rem;color:var(--ink);font-weight:700;opacity:.65}
+.svc.s1{background:var(--coral-tint)} .svc.s1 .ic{color:var(--coral)}
+.svc.s2{background:var(--violet-tint)} .svc.s2 .ic{color:var(--violet-deep)}
+.svc.s3{background:var(--teal-tint)} .svc.s3 .ic{color:var(--teal)}
+.svc.s4{background:var(--yellow-tint)} .svc.s4 .ic{color:#c9870a}
+.svc.s5{background:var(--sky-tint)} .svc.s5 .ic{color:var(--sky)}
+.svc.s6{background:var(--lime-tint)} .svc.s6 .ic{color:#6f9a09}
 
 /* ============ Work ============ */
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .work-card{
-  border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:var(--surface);
-  transition:transform .35s var(--ease),border-color .35s var(--ease);cursor:pointer;
+  border:2px solid var(--ink);border-radius:var(--radius-lg);overflow:hidden;background:var(--white);cursor:pointer;
+  transition:transform .3s var(--bounce),box-shadow .3s var(--ease);box-shadow:0 8px 0 -1px rgba(34,26,46,.16);
 }
-.work-card:hover{transform:translateY(-6px);border-color:var(--border-strong)}
-.work-thumb{aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.work-thumb svg{width:100%;height:100%;display:block;transition:transform .5s var(--ease)}
-.work-card:hover .work-thumb svg{transform:scale(1.04)}
-.work-meta{display:flex;align-items:center;justify-content:space-between;padding:24px 26px}
-.work-meta h3{font-size:1.3rem}
-.work-meta .cat{color:var(--muted);font-size:.9rem;margin-top:4px}
-.work-meta .arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;flex:none;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease)}
-.work-card:hover .arrow{background:var(--accent);color:var(--on-accent);transform:rotate(-45deg)}
+.work-card:hover{transform:translateY(-6px);box-shadow:0 16px 0 -1px rgba(34,26,46,.16)}
+.work-thumb{aspect-ratio:16/10;border-bottom:2px solid var(--ink);overflow:hidden}
+.work-thumb svg{width:100%;height:100%;transition:transform .5s var(--bounce)}
+.work-card:hover .work-thumb svg{transform:scale(1.05) rotate(-1deg)}
+.work-meta{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;gap:14px}
+.work-meta h3{font-size:1.4rem;font-weight:800}
+.work-meta .cat{color:var(--ink-soft);font-size:.92rem;margin-top:4px;font-weight:600}
+.work-meta .arrow{width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;flex:none;background:var(--white);transition:background .25s var(--ease),transform .25s var(--bounce)}
+.work-card:hover .arrow{background:var(--yellow);transform:rotate(-45deg) scale(1.05)}
 .work-meta .arrow svg{width:20px;height:20px}
 
+/* ============ Guarantees ============ */
+.guar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.guar{
+  background:var(--white);border:2px solid var(--ink);border-radius:var(--radius);padding:28px 24px;text-align:center;
+  box-shadow:0 8px 0 -1px rgba(34,26,46,.14);transition:transform .3s var(--bounce)}
+.guar:hover{transform:translateY(-5px) rotate(1.5deg)}
+.guar .bigicon{width:58px;height:58px;margin:0 auto 16px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+.guar .bigicon svg{width:28px;height:28px;color:#fff}
+.guar:nth-child(1) .bigicon{background:var(--coral)} .guar:nth-child(2) .bigicon{background:var(--violet)}
+.guar:nth-child(3) .bigicon{background:var(--teal)} .guar:nth-child(4) .bigicon{background:var(--sky)}
+.guar h3{font-size:1.22rem;font-weight:800;margin-bottom:6px}
+.guar p{font-size:.94rem;color:var(--ink-soft)}
+
 /* ============ Process ============ */
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
-.step{padding:30px 26px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(180deg,var(--surface),var(--bg-elev))}
-.step .n{font-family:"Space Grotesk",sans-serif;font-size:.9rem;font-weight:700;color:var(--accent);letter-spacing:.1em}
-.step h3{font-size:1.22rem;margin:20px 0 10px}
-.step p{color:var(--muted);font-size:.95rem}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{border:2px solid var(--ink);border-radius:var(--radius);padding:28px 24px;background:var(--white);box-shadow:0 8px 0 -1px rgba(34,26,46,.14)}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:18px}
+.step:nth-child(1) .n{background:var(--coral)} .step:nth-child(2) .n{background:var(--violet)}
+.step:nth-child(3) .n{background:var(--teal)} .step:nth-child(4) .n{background:var(--sky)}
+.step h3{font-size:1.24rem;font-weight:800;margin-bottom:8px}
+.step p{color:var(--ink-soft);font-size:.95rem}
 
-/* ============ Stats band ============ */
-.band{background:var(--accent);color:var(--on-accent);border-radius:var(--radius-lg)}
-.band-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:56px 48px}
-.band .num{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.4rem,4vw,3.4rem);font-weight:700;line-height:1}
-.band .lbl{font-weight:500;margin-top:8px;opacity:.8}
-
-/* ============ Testimonial ============ */
-.quote{max-width:880px;margin:0 auto;text-align:center}
-.quote blockquote{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:500;line-height:1.3;letter-spacing:-.02em;margin:28px 0 36px}
-.quote .who{display:flex;align-items:center;justify-content:center;gap:14px}
-.quote .av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));flex:none}
-.quote .who .name{font-weight:600;text-align:left}
-.quote .who .role{color:var(--muted);font-size:.9rem;text-align:left}
-.stars{display:flex;gap:4px;justify-content:center;color:var(--accent)}
-.stars svg{width:22px;height:22px}
+/* ============ Founder note ============ */
+.quote{
+  max-width:880px;margin:0 auto;text-align:center;background:var(--yellow-tint);
+  border:2px solid var(--ink);border-radius:var(--radius-xl);padding:60px 44px;position:relative;
+  box-shadow:0 12px 0 -1px rgba(34,26,46,.16);
+}
+.quote .bigq{position:absolute;top:-26px;left:40px;font-family:"Bricolage Grotesque",sans-serif;font-size:7rem;line-height:1;color:var(--yellow);z-index:0}
+.quote blockquote{position:relative;z-index:1;font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.5rem,3.4vw,2.3rem);font-weight:600;line-height:1.3;letter-spacing:-.02em;margin:8px 0 34px}
+.quote .who{display:flex;align-items:center;justify-content:center;gap:14px;position:relative;z-index:1}
+.quote .av{width:54px;height:54px;border-radius:50%;border:2px solid var(--ink);background:linear-gradient(135deg,var(--coral),var(--violet));flex:none}
+.quote .who .name{font-weight:800;text-align:left}
+.quote .who .role{color:var(--ink-soft);font-size:.9rem;text-align:left}
 
 /* ============ CTA ============ */
-.cta-wrap{position:relative;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-elev);padding:80px 48px;text-align:center;overflow:hidden}
-.cta-wrap .glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(198,244,50,.16),transparent 65%);top:-280px;left:50%;transform:translateX(-50%);pointer-events:none}
-.cta-wrap h2{position:relative;font-size:clamp(2rem,5vw,3.6rem);font-weight:700}
-.cta-wrap p{position:relative;color:var(--muted);font-size:1.1rem;max-width:520px;margin:20px auto 0}
-.cta-wrap .hero-actions{position:relative;justify-content:center}
+.cta-wrap{
+  position:relative;border:2px solid var(--ink);border-radius:var(--radius-xl);padding:80px 48px;text-align:center;overflow:hidden;
+  background:linear-gradient(135deg,var(--violet),var(--coral) 55%,var(--yellow));
+  box-shadow:0 14px 0 -1px rgba(34,26,46,.2);
+}
+.cta-wrap h2{position:relative;z-index:1;font-size:clamp(2.1rem,5.4vw,3.8rem);font-weight:800;color:#fff;text-shadow:0 2px 0 rgba(34,26,46,.18)}
+.cta-wrap p{position:relative;z-index:1;color:#fff;font-size:1.12rem;max-width:520px;margin:18px auto 0;font-weight:500;opacity:.95}
+.cta-wrap .hero-actions{position:relative;z-index:1;justify-content:center}
+.cta-wrap .btn-primary{background:#fff;color:var(--violet-deep);box-shadow:0 8px 0 -2px rgba(34,26,46,.35)}
+.cta-wrap .btn-primary:hover{box-shadow:0 12px 0 -2px rgba(34,26,46,.35)}
+.cta-wrap .btn-ghost{background:transparent;color:#fff;border-color:#fff}
+.cta-wrap .doodle{z-index:0;opacity:.9}
 
 /* ============ Footer ============ */
-.footer{border-top:1px solid var(--border);padding:64px 0 36px;margin-top:40px}
-.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid var(--border)}
-.footer .brand{margin-bottom:18px}
-.footer-col h4{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:18px;font-family:"Inter",sans-serif;font-weight:600}
-.footer-col a{display:block;color:var(--muted);font-size:.96rem;margin-bottom:12px;transition:color .2s var(--ease)}
-.footer-col a:hover{color:var(--fg)}
-.footer-about{color:var(--muted);font-size:.96rem;max-width:300px}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;color:var(--muted-2);font-size:.9rem;flex-wrap:wrap;gap:14px}
-.socials{display:flex;gap:12px}
-.socials a{width:40px;height:40px;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:color .2s,border-color .2s}
-.socials a:hover{color:var(--fg);border-color:var(--border-strong)}
+.footer{background:var(--ink);color:var(--cream);padding:70px 0 40px;margin-top:60px;border-radius:46px 46px 0 0}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,248,238,.16)}
+.footer .brand{margin-bottom:18px;color:var(--cream)}
+.footer-col h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:18px;font-family:"Plus Jakarta Sans";font-weight:700}
+.footer-col a{display:block;color:rgba(255,248,238,.72);font-size:.96rem;margin-bottom:12px;transition:color .2s var(--ease)}
+.footer-col a:hover{color:var(--cream)}
+.footer-about{color:rgba(255,248,238,.72);font-size:.96rem;max-width:300px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:26px;color:rgba(255,248,238,.55);font-size:.9rem;flex-wrap:wrap;gap:14px}
+.socials{display:flex;gap:10px}
+.socials a{width:42px;height:42px;border:2px solid rgba(255,248,238,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);transition:background .2s,color .2s,transform .2s var(--bounce)}
+.socials a:hover{background:var(--yellow);color:var(--ink);transform:translateY(-3px) rotate(-6deg);border-color:var(--yellow)}
 .socials svg{width:18px;height:18px}
+.giant{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(4rem,18vw,13rem);line-height:.85;letter-spacing:-.04em;text-align:center;color:rgba(255,248,238,.08);margin-top:40px;user-select:none}
 
-/* ============ Reveal animation ============ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+/* ============ Reveal ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s var(--ease),transform .6s var(--bounce)}
 .reveal.in{opacity:1;transform:none}
 
 /* ============ Responsive ============ */
 @media(max-width:1024px){
   .services-grid{grid-template-columns:repeat(2,1fr)}
-  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid,.guar-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:760px){
-  .section{padding:84px 0}
+  .section{padding:78px 0}
   .nav-links,.nav-cta .btn{display:none}
   .nav-toggle{display:flex}
-  .nav.open .nav-links{
-    display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;
-    background:var(--bg-elev);border-bottom:1px solid var(--border);padding:24px;gap:20px;align-items:flex-start;
-  }
-  .nav.open .nav-links a{font-size:1.1rem}
-  .hero{padding:140px 0 80px}
-  .hero-stats{gap:32px}
-  .services-grid,.work-grid,.process-grid,.footer-top{grid-template-columns:1fr}
-  .band-inner{grid-template-columns:repeat(2,1fr);padding:40px 28px;gap:32px}
+  .nav.open .nav-inner{border-radius:28px;flex-wrap:wrap}
+  .nav.open .nav-links{display:flex;flex-direction:column;width:100%;align-items:flex-start;gap:16px;padding:14px 10px 6px}
+  .nav.open .nav-links a{font-size:1.15rem}
+  .hero{padding:150px 0 80px}
+  .services-grid,.work-grid,.process-grid,.guar-grid,.footer-top{grid-template-columns:1fr}
+  .quote{padding:48px 24px}
   .cta-wrap{padding:56px 24px}
   .section-head{margin-bottom:44px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
+  .blob{animation:none}
 }
 </style>
 </head>
@@ -238,26 +283,29 @@ ul{margin:0;padding:0;list-style:none}
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#top" class="brand" aria-label="Luma home">
-      <svg class="logo" viewBox="0 0 40 40" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <rect width="40" height="40" rx="11" fill="#c6f432"/>
-        <path d="M20 7 C12.8 7 7 12.8 7 20 C7 27.2 12.8 33 20 33 C23 33 25.7 32 27.9 30.3 L24.6 26.1 C23.3 27 21.7 27.6 20 27.6 C15.8 27.6 12.4 24.2 12.4 20 C12.4 15.8 15.8 12.4 20 12.4 Z" fill="#0a0a0b"/>
-        <circle cx="26.5" cy="13.5" r="4" fill="#0a0a0b"/>
-      </svg>
-      Luma
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-primary">Start a project</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#top" class="brand" aria-label="Luma home">
+        <svg class="logo" viewBox="0 0 40 40" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="40" y2="40"><stop offset="0" stop-color="#ff5c8a"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+          <rect x="1.5" y="1.5" width="37" height="37" rx="12" fill="url(#lg)" stroke="#221a2e" stroke-width="2"/>
+          <path d="M20 8.5 C13.6 8.5 8.5 13.6 8.5 20 C8.5 26.4 13.6 31.5 20 31.5 C22.6 31.5 25 30.7 26.9 29.3 L24 25.6 C22.8 26.4 21.5 26.9 20 26.9 C16.2 26.9 13.1 23.8 13.1 20 C13.1 16.2 16.2 13.1 20 13.1 Z" fill="#fff8ee"/>
+          <circle cx="26.5" cy="14" r="3.6" fill="#fff8ee"/>
+        </svg>
+        Luma
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-primary">Start a project</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </header>
@@ -266,80 +314,94 @@ ul{margin:0;padding:0;list-style:none}
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-grid"></div>
-    <div class="glow g1"></div>
-    <div class="glow g2"></div>
-  </div>
+  <span class="blob b1" aria-hidden="true"></span>
+  <span class="blob b2" aria-hidden="true"></span>
+  <span class="blob b3" aria-hidden="true"></span>
+  <!-- floating doodles -->
+  <svg class="doodle" style="top:120px;left:6%;width:46px;animation:spin 18s linear infinite" viewBox="0 0 24 24" fill="#ffc23c" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+  <svg class="doodle" style="bottom:130px;right:9%;width:64px;animation:wiggle 4s ease-in-out infinite" viewBox="0 0 60 30" fill="none" stroke="#13c4a3" stroke-width="5" stroke-linecap="round" aria-hidden="true"><path d="M3 18c6-14 14-14 20 0s14 14 20 0"/></svg>
   <div class="container hero-inner">
-    <span class="badge"><span class="dot"></span> <strong>Now booking founding clients</strong> — limited spots</span>
-    <h1>We design websites that <span class="grad">make brands unforgettable.</span></h1>
-    <p class="lead">Luma is a digital design studio partnering with ambitious teams to craft strategy-led websites, brand systems, and digital products people actually remember.</p>
+    <span class="sticker"><span class="dot"></span> Now booking founding clients — limited spots</span>
+    <h1>We make websites that <span class="mark"><span>actually work</span><span class="hl"></span></span> — and look <span class="mark c2"><span>amazing</span><span class="hl"></span></span> doing it.</h1>
+    <p class="lead">Luma is a digital design studio partnering with ambitious teams to craft strategy-led websites, brands, and products people actually remember.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary">Start a project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a href="#work" class="btn btn-ghost">View our work</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="num">48h</div><div class="lbl">Reply to every enquiry</div></div>
-      <div class="stat"><div class="num">2 wk</div><div class="lbl">To your first concepts</div></div>
-      <div class="stat"><div class="num">1:1</div><div class="lbl">Senior-led, no handoffs</div></div>
-      <div class="stat"><div class="num">100%</div><div class="lbl">You own files &amp; code</div></div>
+    <div class="chips">
+      <div class="chip k1"><span class="n">48h</span><span class="l">Reply to every enquiry</span></div>
+      <div class="chip k2"><span class="n">2 wk</span><span class="l">To your first concepts</span></div>
+      <div class="chip k3"><span class="n">1:1</span><span class="l">Senior-led, no handoffs</span></div>
+      <div class="chip k4"><span class="n">100%</span><span class="l">You own files &amp; code</span></div>
     </div>
   </div>
 </section>
 
 <!-- ============ MARQUEE ============ -->
-<section class="marquee" aria-label="Tools we build with">
-  <div class="marquee-label">The tools we build with</div>
+<div class="marquee" aria-label="Tools we build with">
   <div class="marquee-track">
-    <span>Figma</span><span>Webflow</span><span>Framer</span><span>React</span><span>Next.js</span><span>Tailwind</span><span>Shopify</span><span>Sanity</span>
-    <span>Figma</span><span>Webflow</span><span>Framer</span><span>React</span><span>Next.js</span><span>Tailwind</span><span>Shopify</span><span>Sanity</span>
+    <span>Figma</span><svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Webflow</span><svg class="star c2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Framer</span><svg class="star c3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>React</span><svg class="star c4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Next.js</span><svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Tailwind</span><svg class="star c2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Shopify</span><svg class="star c3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Sanity</span><svg class="star c4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Figma</span><svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Webflow</span><svg class="star c2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Framer</span><svg class="star c3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>React</span><svg class="star c4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Next.js</span><svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Tailwind</span><svg class="star c2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Shopify</span><svg class="star c3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+    <span>Sanity</span><svg class="star c4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
   </div>
-</section>
+</div>
 
 <!-- ============ SERVICES ============ -->
 <section class="section" id="services">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">What we do</span>
-      <h2>Everything you need to launch and grow online.</h2>
-      <p>From first concept to final pixel, we cover the full spectrum of digital craft — so your brand shows up sharp, fast, and consistent everywhere.</p>
+      <h2>Everything you need to launch and grow.</h2>
+      <p>From first idea to final pixel, we cover the full spectrum of digital craft — so your brand shows up sharp, fast, and consistent everywhere.</p>
     </div>
     <div class="services-grid">
-      <article class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <article class="svc s1 reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <h3>Web Design</h3>
         <p>Conversion-focused, responsive websites designed around your story and built to perform on every screen.</p>
         <div class="tag">UI/UX · Responsive · Design systems</div>
       </article>
-      <article class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 4-4 4h-1c-1.5 0-2 1-2 2a2 2 0 0 1-3 2z"/></svg></div>
+      <article class="svc s2 reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 4-4 4h-1c-1.5 0-2 1-2 2a2 2 0 0 1-3 2z"/></svg></div>
         <h3>Brand Identity</h3>
         <p>Logos, color, type, and guidelines that give your company a confident, ownable visual voice.</p>
         <div class="tag">Logo · Visual system · Guidelines</div>
       </article>
-      <article class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+      <article class="svc s3 reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h3>Development</h3>
         <p>Pixel-perfect builds in modern frameworks and Webflow — fast, accessible, and easy for your team to manage.</p>
         <div class="tag">Webflow · React · Headless CMS</div>
       </article>
-      <article class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <article class="svc s4 reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <h3>Motion &amp; Interaction</h3>
         <p>Micro-interactions and scroll-driven motion that make your product feel alive without slowing it down.</p>
         <div class="tag">Animation · Prototyping · Micro-UX</div>
       </article>
-      <article class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+      <article class="svc s5 reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
         <h3>UX Strategy</h3>
         <p>Research, journey mapping, and information architecture grounded in how your customers actually behave.</p>
         <div class="tag">Research · IA · Journey mapping</div>
       </article>
-      <article class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <article class="svc s6 reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <h3>SEO &amp; Performance</h3>
         <p>Technical foundations, Core Web Vitals, and content structure so the right people actually find you.</p>
         <div class="tag">Core Web Vitals · Technical SEO</div>
@@ -353,42 +415,70 @@ ul{margin:0;padding:0;list-style:none}
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Selected work</span>
-      <h2>Recent projects we're proud of.</h2>
+      <h2>Projects we're proud of.</h2>
       <p>A glimpse at the brands and products we've helped reimagine, redesign, and relaunch.</p>
     </div>
     <div class="work-grid">
       <article class="work-card reveal" tabindex="0">
-        <div class="work-thumb" style="background:linear-gradient(135deg,#1a2a14,#0a0a0b)">
-          <svg viewBox="0 0 400 250" aria-hidden="true"><rect width="400" height="250" fill="none"/><circle cx="300" cy="70" r="80" fill="#c6f432" opacity=".9"/><rect x="40" y="160" width="170" height="14" rx="7" fill="#f4f4f5"/><rect x="40" y="186" width="120" height="10" rx="5" fill="#71717a"/><rect x="40" y="60" width="90" height="26" rx="13" fill="#c6f432"/></svg>
+        <div class="work-thumb" style="background:var(--coral-tint)">
+          <svg viewBox="0 0 400 250" aria-hidden="true"><circle cx="300" cy="74" r="78" fill="#ff5c8a"/><rect x="40" y="58" width="96" height="28" rx="14" fill="#221a2e"/><rect x="40" y="160" width="170" height="16" rx="8" fill="#221a2e"/><rect x="40" y="190" width="120" height="12" rx="6" fill="#221a2e" opacity=".4"/></svg>
         </div>
         <div class="work-meta"><div><h3>Helio Finance</h3><div class="cat">Fintech · Website &amp; Brand</div></div>
-          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
         </div>
       </article>
       <article class="work-card reveal" tabindex="0">
-        <div class="work-thumb" style="background:linear-gradient(135deg,#241a3a,#0a0a0b)">
-          <svg viewBox="0 0 400 250" aria-hidden="true"><rect x="60" y="50" width="120" height="150" rx="16" fill="#7c5cff" opacity=".9"/><rect x="200" y="80" width="140" height="14" rx="7" fill="#f4f4f5"/><rect x="200" y="108" width="110" height="10" rx="5" fill="#71717a"/><rect x="200" y="140" width="90" height="34" rx="17" fill="#c6f432"/></svg>
+        <div class="work-thumb" style="background:var(--violet-tint)">
+          <svg viewBox="0 0 400 250" aria-hidden="true"><rect x="56" y="48" width="120" height="154" rx="20" fill="#7c5cff"/><rect x="200" y="78" width="150" height="16" rx="8" fill="#221a2e"/><rect x="200" y="108" width="110" height="12" rx="6" fill="#221a2e" opacity=".4"/><rect x="200" y="140" width="96" height="38" rx="19" fill="#ffc23c"/></svg>
         </div>
         <div class="work-meta"><div><h3>Foundry Labs</h3><div class="cat">SaaS · Product Design</div></div>
-          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
         </div>
       </article>
       <article class="work-card reveal" tabindex="0">
-        <div class="work-thumb" style="background:linear-gradient(135deg,#2a2410,#0a0a0b)">
-          <svg viewBox="0 0 400 250" aria-hidden="true"><path d="M40 200 L120 110 L190 150 L290 60 L360 110" fill="none" stroke="#c6f432" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="290" cy="60" r="12" fill="#f4f4f5"/><rect x="40" y="40" width="120" height="14" rx="7" fill="#f4f4f5"/></svg>
+        <div class="work-thumb" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 400 250" aria-hidden="true"><path d="M40 200 L120 110 L190 150 L290 60 L360 110" fill="none" stroke="#13c4a3" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="290" cy="60" r="14" fill="#221a2e"/><rect x="40" y="40" width="120" height="16" rx="8" fill="#221a2e"/></svg>
         </div>
         <div class="work-meta"><div><h3>Quanta Analytics</h3><div class="cat">Data · Dashboard UX</div></div>
-          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
         </div>
       </article>
       <article class="work-card reveal" tabindex="0">
-        <div class="work-thumb" style="background:linear-gradient(135deg,#0f2a28,#0a0a0b)">
-          <svg viewBox="0 0 400 250" aria-hidden="true"><circle cx="200" cy="125" r="70" fill="none" stroke="#c6f432" stroke-width="6"/><circle cx="200" cy="125" r="30" fill="#7c5cff"/><rect x="150" y="210" width="100" height="12" rx="6" fill="#f4f4f5"/></svg>
+        <div class="work-thumb" style="background:var(--sky-tint)">
+          <svg viewBox="0 0 400 250" aria-hidden="true"><circle cx="200" cy="120" r="72" fill="none" stroke="#3aa0ff" stroke-width="9"/><circle cx="200" cy="120" r="32" fill="#ff5c8a"/><rect x="150" y="208" width="100" height="14" rx="7" fill="#221a2e"/></svg>
         </div>
         <div class="work-meta"><div><h3>Brightside</h3><div class="cat">Wellness · E-commerce</div></div>
-          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEES ============ -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Our promise</span>
+      <h2>What every Luma project includes.</h2>
+    </div>
+    <div class="guar-grid">
+      <div class="guar reveal">
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Fixed fee</h3><p>One flat project price — no hourly surprises.</p>
+      </div>
+      <div class="guar reveal">
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>On time</h3><p>Delivered on the date we agree, every time.</p>
+      </div>
+      <div class="guar reveal">
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h3>It's yours</h3><p>You keep all files, code &amp; assets, forever.</p>
+      </div>
+      <div class="guar reveal">
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Backed</h3><p>We revise until it's right — in scope, no clock.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -402,54 +492,25 @@ ul{margin:0;padding:0;list-style:none}
       <p>No black boxes. Every engagement follows four focused phases so you always know what's happening and what's next.</p>
     </div>
     <div class="process-grid">
-      <div class="step reveal"><div class="n">01 / DISCOVER</div><h3>Discover</h3><p>We dig into your goals, audience, and market to define what success actually looks like.</p></div>
-      <div class="step reveal"><div class="n">02 / DESIGN</div><h3>Design</h3><p>We craft the visual direction, wireframes, and high-fidelity designs in tight feedback loops.</p></div>
-      <div class="step reveal"><div class="n">03 / BUILD</div><h3>Build</h3><p>We develop a fast, accessible, pixel-perfect site that's easy for your team to maintain.</p></div>
-      <div class="step reveal"><div class="n">04 / LAUNCH</div><h3>Launch &amp; Grow</h3><p>We ship, measure, and iterate — optimizing for performance and conversion over time.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GUARANTEES BAND ============ -->
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="section-head reveal" style="text-align:center;margin:0 auto 44px;max-width:600px">
-      <span class="eyebrow" style="display:inline-flex">Our promise</span>
-      <h2>What every Luma project includes.</h2>
-    </div>
-    <div class="band reveal">
-      <div class="band-inner">
-        <div><div class="num">Fixed</div><div class="lbl">Flat project fee — no hourly surprises</div></div>
-        <div><div class="num">On&#8209;time</div><div class="lbl">Delivered on the date we agree</div></div>
-        <div><div class="num">Yours</div><div class="lbl">You keep all files, code &amp; assets</div></div>
-        <div><div class="num">Backed</div><div class="lbl">We revise until it's right, in scope</div></div>
-      </div>
+      <div class="step reveal"><div class="n">1</div><h3>Discover</h3><p>We dig into your goals, audience, and market to define what success actually looks like.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Design</h3><p>We craft the visual direction, wireframes, and high-fidelity designs in tight feedback loops.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Build</h3><p>We develop a fast, accessible, pixel-perfect site that's easy for your team to maintain.</p></div>
+      <div class="step reveal"><div class="n">4</div><h3>Launch &amp; Grow</h3><p>We ship, measure, and iterate — optimizing for performance and conversion over time.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ============ FOUNDER NOTE ============ -->
 <!--
-  NOTE: This section is an honest "founder's note" for a new studio.
-  Once you have a real client testimonial, you can replace it with the
-  template below (fill in the real quote, name, role, and company):
-
-  <div class="quote reveal">
-    <div class="stars" aria-label="5 out of 5 stars">
-      ... 5 star SVGs ...
-    </div>
-    <blockquote>"REAL CLIENT QUOTE HERE."</blockquote>
-    <div class="who">
-      <div class="av"></div>
-      <div><div class="name">CLIENT NAME</div><div class="role">ROLE, COMPANY</div></div>
-    </div>
-  </div>
+  Honest "founder's note" for a new studio. Once you have a real client
+  testimonial, swap this block for a quote with the client's real name,
+  role, company, and a 5-star row.
 -->
 <section class="section" id="about" style="padding-top:0">
   <div class="container">
     <div class="quote reveal">
-      <span class="eyebrow" style="display:inline-flex">A note from the founder</span>
-      <blockquote>"Most websites fail because they're built to look busy, not to do a job. Every Luma project starts with one question — what should this site actually achieve? — and we design relentlessly around the answer."</blockquote>
+      <span class="bigq" aria-hidden="true">&ldquo;</span>
+      <blockquote>Most websites fail because they're built to look busy, not to do a job. Every Luma project starts with one question — what should this site actually achieve? — and we design relentlessly around the answer.</blockquote>
       <div class="who">
         <div class="av" aria-hidden="true"></div>
         <div><div class="name">Your Name</div><div class="role">Founder &amp; Lead Designer, Luma</div></div>
@@ -462,12 +523,13 @@ ul{margin:0;padding:0;list-style:none}
 <section class="section" id="contact" style="padding-top:0">
   <div class="container">
     <div class="cta-wrap reveal">
-      <div class="glow" aria-hidden="true"></div>
+      <svg class="doodle" style="top:24px;left:40px;width:54px;animation:spin 16s linear infinite" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z"/></svg>
+      <svg class="doodle" style="bottom:30px;right:48px;width:70px;animation:wiggle 4s ease-in-out infinite" viewBox="0 0 60 30" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" aria-hidden="true"><path d="M3 18c6-14 14-14 20 0s14 14 20 0"/></svg>
       <h2>Let's build something worth remembering.</h2>
       <p>Tell us about your project. We'll get back within one business day with next steps — no pushy sales calls.</p>
       <div class="hero-actions">
         <a href="mailto:hello@luma.studio" class="btn btn-primary">Start a project
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#work" class="btn btn-ghost">See more work</a>
       </div>
@@ -484,9 +546,10 @@ ul{margin:0;padding:0;list-style:none}
       <div>
         <div class="brand">
           <svg class="logo" viewBox="0 0 40 40" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" rx="11" fill="#c6f432"/>
-            <path d="M20 7 C12.8 7 7 12.8 7 20 C7 27.2 12.8 33 20 33 C23 33 25.7 32 27.9 30.3 L24.6 26.1 C23.3 27 21.7 27.6 20 27.6 C15.8 27.6 12.4 24.2 12.4 20 C12.4 15.8 15.8 12.4 20 12.4 Z" fill="#0a0a0b"/>
-            <circle cx="26.5" cy="13.5" r="4" fill="#0a0a0b"/>
+            <defs><linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40"><stop offset="0" stop-color="#ff5c8a"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+            <rect x="1.5" y="1.5" width="37" height="37" rx="12" fill="url(#lg2)" stroke="#fff8ee" stroke-width="2"/>
+            <path d="M20 8.5 C13.6 8.5 8.5 13.6 8.5 20 C8.5 26.4 13.6 31.5 20 31.5 C22.6 31.5 25 30.7 26.9 29.3 L24 25.6 C22.8 26.4 21.5 26.9 20 26.9 C16.2 26.9 13.1 23.8 13.1 20 C13.1 16.2 16.2 13.1 20 13.1 Z" fill="#fff8ee"/>
+            <circle cx="26.5" cy="14" r="3.6" fill="#fff8ee"/>
           </svg>
           Luma
         </div>
@@ -494,23 +557,15 @@ ul{margin:0;padding:0;list-style:none}
       </div>
       <div class="footer-col">
         <h4>Studio</h4>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
+        <a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="#services">Web Design</a>
-        <a href="#services">Brand Identity</a>
-        <a href="#services">Development</a>
-        <a href="#services">UX Strategy</a>
+        <a href="#services">Web Design</a><a href="#services">Brand Identity</a><a href="#services">Development</a><a href="#services">UX Strategy</a>
       </div>
       <div class="footer-col">
         <h4>Get in touch</h4>
-        <a href="mailto:hello@luma.studio">hello@luma.studio</a>
-        <a href="tel:+10000000000">+1 (000) 000-0000</a>
-        <a href="#contact">Start a project</a>
+        <a href="mailto:hello@luma.studio">hello@luma.studio</a><a href="tel:+10000000000">+1 (000) 000-0000</a><a href="#contact">Start a project</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -522,18 +577,13 @@ ul{margin:0;padding:0;list-style:none}
         <a href="#" aria-label="Luma on Dribbble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M5 7c4 4 9 5 14 4M3 12c6-1 12 1 16 6M9 3c4 5 6 11 5 18"/></svg></a>
       </div>
     </div>
+    <div class="giant" aria-hidden="true">LUMA</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  // Sticky nav background on scroll
   var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>20);}
-  onScroll();
-  window.addEventListener('scroll',onScroll,{passive:true});
-
-  // Mobile menu
   var toggle=document.getElementById('navToggle');
   toggle.addEventListener('click',function(){
     var open=nav.classList.toggle('open');
@@ -543,18 +593,13 @@ ul{margin:0;padding:0;list-style:none}
     a.addEventListener('click',function(){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');});
   });
 
-  // Scroll reveal
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-      });
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
     },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(el){io.observe(el);});
-  }else{
-    els.forEach(function(el){el.classList.add('in');});
-  }
+  }else{els.forEach(function(el){el.classList.add('in');});}
 })();
 </script>
 </body>
